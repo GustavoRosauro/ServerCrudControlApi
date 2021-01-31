@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerCrudControl.Commom", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerCrudControl.Infra", "ServerCrudControl.Infra\ServerCrudControl.Infra.csproj", "{285EBB3F-9A13-4EBC-BA8F-468BEFA708D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerCrudControl.Core", "ServerCrudControl.Core\ServerCrudControl.Core.csproj", "{962DF7F7-83F7-47F7-A1F3-EBECC65BB5DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerCrudControl.Core", "ServerCrudControl.Core\ServerCrudControl.Core.csproj", "{962DF7F7-83F7-47F7-A1F3-EBECC65BB5DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerCrudControl.Testes", "ServerCrudControl.Testes\ServerCrudControl.Testes.csproj", "{2C6108A2-38BE-437F-B84E-0FAE3808C702}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{962DF7F7-83F7-47F7-A1F3-EBECC65BB5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{962DF7F7-83F7-47F7-A1F3-EBECC65BB5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{962DF7F7-83F7-47F7-A1F3-EBECC65BB5DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C6108A2-38BE-437F-B84E-0FAE3808C702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6108A2-38BE-437F-B84E-0FAE3808C702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6108A2-38BE-437F-B84E-0FAE3808C702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C6108A2-38BE-437F-B84E-0FAE3808C702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
