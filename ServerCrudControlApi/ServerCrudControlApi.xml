@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ServerCrudControlApi</name>
+    </assembly>
+    <members>
+        <member name="T:ServerCrudControlApi.Controllers.ServerController">
+            <summary>
+            API de gerenciamento dos servidores
+            </summary>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Carregar as configurações do sistema que estão no arquivo appsetings.json
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.CadastrarServidor(ServerCrudControl.Commom.DTO.ServidorDTO)">
+            <summary>
+            API responsável pelo cadastro de servidores
+            </summary>
+            <param name="servidor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.RemoverServidor(System.Guid)">
+            <summary>
+            API responsável pela remoção dos servidores
+            </summary>
+            <param name="serverId"></param>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.RetornarServidor(System.Guid)">
+            <summary>
+            Api responsável por retornar dados de um servidor
+            </summary>
+            <param name="serverId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.ValidarDisponibilidadeServidor(System.Guid)">
+            <summary>
+            Api para Validar Disponbilidade do Servidor
+            </summary>
+            <param name="serverId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.RetornaListaServidores">
+            <summary>
+            Api responsável por retornar lista de servidores cadastrados 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ServerCrudControlApi.Controllers.VideoController">
+            <summary>
+            Api responsável por gerenciar os vídeos
+            </summary>
+        </member>
+        <member name="F:ServerCrudControlApi.Controllers.VideoController._environment">
+            <summary>
+            Configuraçãoes de arquivos
+            </summary>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configurações da api de vídeos
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.CadastrarVideo(System.Guid,ServerCrudControl.Commom.DTO.VideoDTO)">
+            <summary>
+            Api para cadastrar Vídeos
+            </summary>
+            <param name="serverId"></param>
+            <param name="video"></param>       
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.RemoverVideo(System.Guid,System.Guid)">
+            <summary>
+            Api responsável por remover os vídeos inseridos na base
+            </summary>
+            <param name="serverId"></param>
+            <param name="videoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.RetornarDadosVideo(System.Guid,System.Guid)">
+            <summary>
+            Api responsável por retornar dados cadastrais do vídeo
+            </summary>
+            <param name="serverId"></param>
+            <param name="videoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.RetornaBinarioVideo(System.Guid,System.Guid)">
+            <summary>
+            Api responsável por disponibilizar binarios do vídeo
+            </summary>
+            <param name="serverId"></param>
+            <param name="videoId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.RetornarTodosVideosServidor(System.Guid)">
+            <summary>
+            Api responsável por retornar lista de vídeos por servidor
+            </summary>
+            <param name="serverId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.ReciclarVideosAntigos(System.Int32)">
+            <summary>
+            API responsável por chamar a tarefa de reciclagem que é executada em segundo plano
+            </summary>
+            <param name="days"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.RetornarStatusTask">
+            <summary>
+            API responsável por retornar a situação da execução da TASK
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

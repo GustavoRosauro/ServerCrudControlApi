@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
+
+LABEL version="1.0" maintainer="ServerCrudApi"
+
+workdir /app
+
+copy ./bin/Debug/net5.0/publish .
+
+entrypoint ["dotnet","/app/ServerCrudControlApi.dll"]
