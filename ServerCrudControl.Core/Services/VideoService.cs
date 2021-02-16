@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ServerCrudControl.Commom;
 using ServerCrudControl.Commom.DTO;
+using ServerCrudControl.Core.Interfaces;
 using ServerCrudControl.Infra.Model;
 using ServerCrudControl.Infra.Repository;
 using ServerCrudControl.Infra.Repository.Interfaces;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ServerCrudControl.Core.Services
 {
-    public class VideoService
+    public class VideoService:IVideoService
     {
         private IUnitOfWork _unitOfWork;
         public VideoService(IConfiguration configuration)

@@ -30,7 +30,7 @@ namespace ServerCrudControl.Testes
         public void RetornarDadosServidorTeste()
         {
             Guid id = Guid.Parse("5C1BDC2F-033C-42D8-92CC-996294175C46");
-            var servidor = new ServerService(_configuration).RetornaDadosServidor(id);
+            var servidor = new ServerService(_configuration).RetornarDadosServidor(id);
             Assert.AreEqual(servidor.Id, id);
         }
         [Test]

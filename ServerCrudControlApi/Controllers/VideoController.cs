@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using ServerCrudControl.Commom;
 using ServerCrudControl.Commom.DTO;
+using ServerCrudControl.Core.Interfaces;
 using ServerCrudControl.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -23,17 +24,17 @@ namespace ServerCrudControlApi.Controllers
         /// <summary>
         /// Configuraçãoes de arquivos
         /// </summary>
-        public IWebHostEnvironment _environment;
-        private IConfiguration _configuration;
+        private IWebHostEnvironment _environment;
+        private IVideoService _video;
         /// <summary>
         /// Configurações da api de vídeos
         /// </summary>
-        /// <param name="configuration"></param>
         /// <param name="environment"></param>
-        public VideoController(IConfiguration configuration, IWebHostEnvironment environment)
+        /// <param name="video"></param>
+        public VideoController(IVideoService video,IWebHostEnvironment environment)
         {
-            _configuration = configuration;
             _environment = environment;
+            _video = video;
         }
         /// <summary>
         /// Api para cadastrar Vídeos
@@ -62,7 +63,7 @@ namespace ServerCrudControlApi.Controllers
             videoBase = VideoConversions.RetornarVideoBase64(caminho);
             if (!string.IsNullOrEmpty(caminho.Trim()))
                 System.IO.File.Delete(caminho);
-            new VideoService(_configuration).CadastrarVideo(serverId, video, videoBase);
+            _video.CadastrarVideo(serverId, video, videoBase);
             return Ok("Vídeo inserido com sucesso!");
         }
         /// <summary>
@@ -74,7 +75,7 @@ namespace ServerCrudControlApi.Controllers
         [HttpDelete("servers/{serverId}/videos/{videoId}")]
         public IActionResult RemoverVideo(Guid serverId, Guid videoId)
         {
-            new VideoService(_configuration).DeletarVideo(videoId, serverId);
+            _video.DeletarVideo(videoId, serverId);
             return Ok("Removido com sucesso!");
         }
         /// <summary>
@@ -86,7 +87,7 @@ namespace ServerCrudControlApi.Controllers
         [HttpGet("servers/{serverId}/videos/{videoId}")]
         public IActionResult RetornarDadosVideo(Guid serverId, Guid videoId)
         {
-            var video = new VideoService(_configuration).RetornarDadosVideo(videoId, serverId);
+            var video = _video.RetornarDadosVideo(videoId, serverId);
             var objectView = new
             {
                 Id = video.Id,
@@ -106,7 +107,7 @@ namespace ServerCrudControlApi.Controllers
         [HttpGet("servers/{serverId}/videos/{videoId}/binary")]
         public IActionResult RetornaBinarioVideo(Guid serverId, Guid videoId)
         {
-            var binario = new VideoService(_configuration).RetornaBinariosBase64(videoId, serverId);
+            var binario = _video.RetornaBinariosBase64(videoId, serverId);
             return Ok(binario);
         }
         /// <summary>
@@ -117,7 +118,7 @@ namespace ServerCrudControlApi.Controllers
         [HttpGet("servers/{serverId}/videos")]
         public IActionResult RetornarTodosVideosServidor(Guid serverId)
         {
-            var videos = new VideoService(_configuration).RetornarTodosVideosServidor(serverId);
+            var videos = _video.RetornarTodosVideosServidor(serverId);
             return Ok(videos);
         }
         /// <summary>
@@ -138,7 +139,7 @@ namespace ServerCrudControlApi.Controllers
         [HttpGet("recycler/status")]
         public IActionResult RetornarStatusTask()
         {
-            var mensagem = new VideoService(_configuration).RetornarSituacaoTask();
+            var mensagem = _video.RetornarSituacaoTask();
             return Ok(mensagem);
         }
         /// <summary>
@@ -147,12 +148,12 @@ namespace ServerCrudControlApi.Controllers
         /// <param name="dias"></param>
         private void ExecuteBackGroundTask(int dias)
         {
-            new VideoService(_configuration).InicioProcessTask();
+            _video.InicioProcessTask();
             Task t = Task.Run(() => 
             {
                 Task.Delay(50000).Wait();
-                new VideoService(_configuration).ReciclarVideos(dias);
-                new VideoService(_configuration).FinalizarSituacaoTask();
+                _video.ReciclarVideos(dias);
+                _video.FinalizarSituacaoTask();
             });                        
 ;        }
     }

@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ServerCrudControl.Core.Interfaces;
+using ServerCrudControl.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,6 +43,8 @@ namespace ServerCrudControlApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+            services.AddScoped<IServerService>(x => new ServerService(Configuration));
+            services.AddScoped<IVideoService>(x => new VideoService(Configuration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

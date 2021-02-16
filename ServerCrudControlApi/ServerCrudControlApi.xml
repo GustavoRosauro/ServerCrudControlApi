@@ -9,11 +9,16 @@
             API de gerenciamento dos servidores
             </summary>
         </member>
-        <member name="M:ServerCrudControlApi.Controllers.ServerController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="F:ServerCrudControlApi.Controllers.ServerController._server">
             <summary>
-            Carregar as configurações do sistema que estão no arquivo appsetings.json
+            parametro usado em todo o código
             </summary>
-            <param name="configuration"></param>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.ServerController.#ctor(ServerCrudControl.Core.Interfaces.IServerService)">
+            <summary>
+            injeção de dependencia no parametro mencionado acima
+            </summary>
+            <param name="server"></param>
         </member>
         <member name="M:ServerCrudControlApi.Controllers.ServerController.CadastrarServidor(ServerCrudControl.Commom.DTO.ServidorDTO)">
             <summary>
@@ -58,11 +63,12 @@
             Configuraçãoes de arquivos
             </summary>
         </member>
-        <member name="M:ServerCrudControlApi.Controllers.VideoController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.#ctor(ServerCrudControl.Core.Interfaces.IVideoService,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
             <summary>
             Configurações da api de vídeos
             </summary>
-            <param name="configuration"></param>
+            <param name="environment"></param>
+            <param name="video"></param>
         </member>
         <member name="M:ServerCrudControlApi.Controllers.VideoController.CadastrarVideo(System.Guid,ServerCrudControl.Commom.DTO.VideoDTO)">
             <summary>
@@ -115,6 +121,12 @@
             API responsável por retornar a situação da execução da TASK
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:ServerCrudControlApi.Controllers.VideoController.ExecuteBackGroundTask(System.Int32)">
+            <summary>
+            Foi adicionado um delay de 50 segundos para poder realizar a simulação da execução da task
+            </summary>
+            <param name="dias"></param>
         </member>
     </members>
 </doc>

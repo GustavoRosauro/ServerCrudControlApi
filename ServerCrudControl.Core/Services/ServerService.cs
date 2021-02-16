@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using ServerCrudControl.Commom;
 using ServerCrudControl.Commom.DTO;
+using ServerCrudControl.Core.Interfaces;
 using ServerCrudControl.Infra.Model;
 using ServerCrudControl.Infra.Repository;
 using ServerCrudControl.Infra.Repository.Interfaces;
@@ -13,7 +14,7 @@ using System.Text;
 
 namespace ServerCrudControl.Core.Services
 {
-    public class ServerService
+    public class ServerService:IServerService
     {
         private IUnitOfWork _unitOfWork;
         public ServerService(IConfiguration configuration)
@@ -52,7 +53,7 @@ namespace ServerCrudControl.Core.Services
                 throw new Exception(ex.Message);
             }
         }
-        public ServidorCustomDTO RetornaDadosServidor(Guid id)
+        public ServidorCustomDTO RetornarDadosServidor(Guid id)
         {
             try
             {
